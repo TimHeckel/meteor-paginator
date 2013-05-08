@@ -15,68 +15,68 @@ Meteor Paginator provides templates and callbacks to easily page your subscribed
 
 You'll need to expose your publication with arguments for `limit` and `skip`
 
-  Meteor.publish("myCollection", function(skip, limit) {
-    return MyCollection.find({}, {
-      skip: skip || 0
-      , limit: limit || 10
+    Meteor.publish("myCollection", function(skip, limit) {
+      return MyCollection.find({}, {
+        skip: skip || 0
+        , limit: limit || 10
+      });
     });
-  });
   
 Next, you'll need a server method that gives you a total record count for your collection.
 
-  Meteor.methods({
-    totalCount: function() {
-      return MyCollection.find().count();
-    }
-  });
+    Meteor.methods({
+      totalCount: function() {
+        return MyCollection.find().count();
+      }
+    });
   
 ####Client Code
 
 Wire up your subscription with `Session` variables for both `skip` and `limit`
  
-  Deps.autorun(function() {
-    Meteor.subHandle = Meteor.subscribe("myCollection", Session.get("pagingSkip"), Session.get("pagingLimit"));
-  }
+    Deps.autorun(function() {
+      Meteor.subHandle = Meteor.subscribe("myCollection", Session.get("pagingSkip"), Session.get("pagingLimit"));
+    }
   
 Next, in your `Template` where you want to page the data, instantiate the Paginator:
 
-  var _pager = new Meteor.Paginator({
-    	templates: {
-  			content: "my_template"
-  		}
-  		, pagination: {
-  	    	resultsPerPage: 5 //default limit
-  		}
-  		, callbacks: {
-  			onPagingCompleted: function(skip, limit) {
-            Session.set("pagingSkip", skip);
-            Session.set("pagingLimit", limit);
-  			}
-  			, getDependentSubscriptionsHandles: function() {
-  				  return [Meteor.subHandle];
-  			}
-  			, getTotalRecords: function(cb) {
-            //you need to return the total record count here
-            //using the provided callback
-            Meteor.call("totalCount", function(err, result) {
-              cb(result);
-            });
-  			}
-  			, onTemplateRendered: function() {
-          //regular render code
-  			}
-  			, onTemplateCreated: function() {
-          Session.set("pagingSkip", 0);
-          Session.set("pagingLimit", 5);
-  			}
-  		}
-  	});
+    var _pager = new Meteor.Paginator({
+      	templates: {
+    			content: "my_template"
+    		}
+    		, pagination: {
+    	    	resultsPerPage: 5 //default limit
+    		}
+    		, callbacks: {
+    			onPagingCompleted: function(skip, limit) {
+              Session.set("pagingSkip", skip);
+              Session.set("pagingLimit", limit);
+    			}
+    			, getDependentSubscriptionsHandles: function() {
+    				  return [Meteor.subHandle];
+    			}
+    			, getTotalRecords: function(cb) {
+              //you need to return the total record count here
+              //using the provided callback
+              Meteor.call("totalCount", function(err, result) {
+                cb(result);
+              });
+    			}
+    			, onTemplateRendered: function() {
+            //regular render code
+    			}
+    			, onTemplateCreated: function() {
+            Session.set("pagingSkip", 0);
+            Session.set("pagingLimit", 5);
+    			}
+    		}
+    	});
     
 And ensure you're sending in the collection to the template:
 
-   Template.my_template.person = function() {
-      return MyCollection.find();
-   };
+     Template.my_template.person = function() {
+        return MyCollection.find();
+     };
 
 Finally, in your HTML
 
