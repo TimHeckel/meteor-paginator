@@ -2,12 +2,13 @@
 	{{#if hasMultiplePages}}
 		<div class="pagination pagination-button-container pull-right">
 			<ul>
-				<li class="disabled"><a href="javascript:" data-page="back" class="pageButton">&laquo;</a></li>
-				<li class="active"><a href="javascript:" data-page="0" class="pageButton">1</a></li>
+				<li><a href="javascript:" data-page="first" class="pageButton">&laquo;&laquo;</a></li>
+				<li><a href="javascript:" data-page="back" class="pageButton">&laquo;</a></li>
 				{{#each pageButton}}
-					<li><a href="javascript:" data-page="{{r}}"  class="pageButton">{{p}}</a></li>
+					<li><a href="javascript:" data-page="{{r}}" class="pageButton">{{p}}</a></li>
 				{{/each}}
 				<li><a href="javascript:" data-page="next" class="pageButton">&raquo;</a></li>
+				<li><a href="javascript:" data-page="last" class="pageButton">&raquo;&raquo;</a></li>
 			</ul>
 		</div>
 	{{/if}}
@@ -15,7 +16,7 @@
 
 <template name="select_per_page">
  	<div class="pull-right selectPerPage">
-    	<select class="input-mini" id="selectPerPage">
+    	<select id="selectPerPage" class="input-mini" style='font-size:10pt;'>
 	   		<option value="5">5</option>
 	   		<option value="10">10</option>
 	   		<option value="20">20</option>
@@ -26,7 +27,4 @@
 	   		<option value="100">100</option>
 		</select>
     </div>
-    <div class="pull-right lblResultsPerPage">
-        Results Per Page:
-    </div>   
 </template>

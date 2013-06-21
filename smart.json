@@ -3,6 +3,6 @@
     "description": "Simple pagination for Meteor data",
     "homepage": "https://github.com/TimHeckel/meteor-paginator",
     "author": "Tim Heckel  (http://timheckel.com)",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "git": "https://github.com/TimHeckel/meteor-paginator.git"
 }
