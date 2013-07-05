@@ -42,36 +42,36 @@ Next, in your `Template` where you want to page the data, instantiate the Pagina
 
     var _pager = new Meteor.Paginator({
       	templates: {
-    			content: "my_template"
-    		}
-    		, pagination: {
-    	    	resultsPerPage: 5 //default limit
-    		}
-    		, callbacks: {
-    			onPagingCompleted: function(skip, limit) {
-              Session.set("pagingSkip", skip);
-              Session.set("pagingLimit", limit);
-    			}
-    			, getDependentSubscriptionsHandles: function() {
-    				  return [Meteor.subHandle];
-    			}
-    			, getTotalRecords: function(cb) {
-              //you need to return the total record count here
-              //using the provided callback
-              Meteor.call("totalCount", function(err, result) {
-                cb(result);
-              });
-    			}
-    			, onTemplateRendered: function() {
-            //regular render code
-    			}
-    			, onTemplateCreated: function() {
-            Session.set("pagingSkip", 0);
-            Session.set("pagingLimit", 5);
-    			}
-    		}
-    	});
-    
+			content: "my_template"
+		}
+		, pagination: {
+	    	resultsPerPage: 5 //default limit
+		}
+		, callbacks: {
+			onPagingCompleted: function(skip, limit) {
+                Session.set("pagingSkip", skip);
+                Session.set("pagingLimit", limit);
+			}
+			, getDependentSubscriptionsHandles: function() {
+				  return [Meteor.subHandle];
+			}
+			, getTotalRecords: function(cb) {
+                  //you need to return the total record count here
+                  //using the provided callback
+                  Meteor.call("totalCount", function(err, result) {
+                    cb(result);
+                  });
+			}
+			, onTemplateRendered: function() {
+                //regular render code
+			}
+			, onTemplateCreated: function() {
+                Session.set("pagingSkip", 0);
+                Session.set("pagingLimit", 5);
+			}
+		}
+	});
+
 And ensure you're sending in the collection to the template:
 
      Template.my_template.person = function() {
@@ -96,13 +96,13 @@ Finally, in your HTML
      </table>
      
      <div class="well well-small">
-        {{> pagination_buttons }}
-        {{> select_per_page }}
+        {{{ paginationButtons }}}
+        {{{ selectPerPage }}}
      </div>
      
   </template>
   
-Both `pagination_buttons` and `select_per_page` are templates included in Meteor.Paginator. The styling all comes from Twitter Bootstrap.
+Both `{{{paginationPuttons}}}` and `{{{selectPerPage}}}` are dynamically-creatd templates included in Meteor.Paginator. The styling all comes from Twitter Bootstrap.
 
 
 
