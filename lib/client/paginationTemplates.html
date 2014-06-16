@@ -1,24 +1,34 @@
 <template name="pagination_buttons">
 	{{#if hasMultiplePages}}
-		<div class="pagination-button-container">
-			<ul class="pagination">
-				<li><a href="javascript:" data-page="first" class="pageButton" data-instance-id="{{instance}}">&laquo;&laquo;</a></li>
-				<li><a href="javascript:" data-page="back" class="pageButton" data-instance-id="{{instance}}">&laquo;</a></li>
-				{{#each pageButton}}
-					<li><a href="javascript:" data-page="{{r}}" class="pageButton" data-instance-id="{{instance}}">{{p}}</a></li>
-				{{/each}}
-				<li><a href="javascript:" data-page="next" class="pageButton" data-instance-id="{{instance}}">&raquo;</a></li>
-				<li><a href="javascript:" data-page="last" class="pageButton" data-instance-id="{{instance}}">&raquo;&raquo;</a></li>
-			</ul>
-		</div>
+		<ul class="pagination">
+			<li>
+				<a href="javascript:" data-page="first" class="pageButton" data-instance-id="{{instance}}"><i class="fa fa-angle-double-left"></i></a>
+			</li>
+			<li>
+				<a href="javascript:" data-page="back" class="pageButton" data-instance-id="{{instance}}"><i class="fa fa-angle-left"></i></a></li>
+			{{#each pageButton}}
+				<li><a href="javascript:" data-page="{{r}}" class="pageButton" data-instance-id="{{../instance}}">{{p}}</a></li>
+			{{/each}}
+			<li>
+				<a href="javascript:" data-page="next" class="pageButton" data-instance-id="{{instance}}"><i class="fa fa-angle-right"></i></a>
+				</li>
+			<li>
+				<a href="javascript:" data-page="last" class="pageButton" data-instance-id="{{instance}}"><i class="fa fa-angle-double-right"></i></a>
+			</li>
+		</ul>
 	{{/if}}
 </template>
 
 <template name="select_per_page">
-	<select id="selectPerPage" class="input-mini" style='font-size:10pt;' data-instance-id="{{instance}}">
-   		<option value="5">5</option>
-   		<option value="10">10</option>
-   		<option value="20">20</option>
-   		<option value="30">30</option>
-	</select>
+	<div class="pull-left margin-7">
+		<small>records per page:</small>
+	</div>
+	<div class="pull-left">
+		<select id="selectPerPage" class="form-control input-sm" style='font-size:10pt;' data-instance-id="{{instance}}">
+			<option value="5">5</option>
+			<option value="10">10</option>
+			<option value="20">20</option>
+			<option value="30">30</option>
+		</select>
+	</div>
 </template>
