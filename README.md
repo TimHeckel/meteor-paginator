@@ -96,8 +96,8 @@ Finally, in your HTML
      </table>
      
      <div class="well well-small">
-        {{{ paginationButtons }}}
-        {{{ selectPerPage }}}
+        {{> paginationButtons data }}
+        {{> selectPerPage data }}
      </div>
      
   </template>
@@ -312,8 +312,8 @@ You may want to page the same data twice, or page different data, within the sam
 			{{/each}}
 		</table>
 		<div class="well well-small">
-			{{{ paginationButtons }}}
-			{{{ selectPerPage }}}
+			{{> paginationButtons data }}
+			{{> selectPerPage data }}
 		</div>
 	</template>
 
@@ -334,8 +334,8 @@ You may want to page the same data twice, or page different data, within the sam
 			{{/each}}
 		</table>
 		<div class="well well-small">
-			{{{ paginationButtons }}}
-			{{{ selectPerPage }}}
+			{{> paginationButtons data }}
+			{{> selectPerPage data }}
 		</div>
 	</template>
 
@@ -356,8 +356,8 @@ You may want to page the same data twice, or page different data, within the sam
 			{{/each}}
 		</table>
 		<div class="well well-small">
-			{{{ paginationButtons }}}
-			{{{ selectPerPage }}}
+			{{> paginationButtons data }}
+			{{> selectPerPage data }}
 		</div>
 	</template>
 

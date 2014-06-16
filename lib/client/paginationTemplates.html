@@ -1,11 +1,11 @@
 <template name="pagination_buttons">
 	{{#if hasMultiplePages}}
-		<div class="pagination pagination-button-container">
-			<ul>
+		<div class="pagination-button-container">
+			<ul class="pagination">
 				<li><a href="javascript:" data-page="first" class="pageButton" data-instance-id="{{instance}}">&laquo;&laquo;</a></li>
 				<li><a href="javascript:" data-page="back" class="pageButton" data-instance-id="{{instance}}">&laquo;</a></li>
 				{{#each pageButton}}
-					<li><a href="javascript:" data-page="{{r}}" class="pageButton" data-instance-id="{{../instance}}">{{p}}</a></li>
+					<li><a href="javascript:" data-page="{{r}}" class="pageButton" data-instance-id="{{instance}}">{{p}}</a></li>
 				{{/each}}
 				<li><a href="javascript:" data-page="next" class="pageButton" data-instance-id="{{instance}}">&raquo;</a></li>
 				<li><a href="javascript:" data-page="last" class="pageButton" data-instance-id="{{instance}}">&raquo;&raquo;</a></li>
