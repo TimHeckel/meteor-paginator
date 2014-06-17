@@ -2,6 +2,8 @@
 
 This package provides a simple mechanism to paginate your data subscriptions in Meteor.
 
+**NOTE: this is not blaze-compatible. Take a look at [meteor-pages](https://atmospherejs.com/package/pages) instead**
+
 ###Installation
 
 1. Install [meteorite](https://github.com/oortcloud/meteorite)
