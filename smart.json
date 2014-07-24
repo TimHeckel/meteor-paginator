@@ -1,8 +1,8 @@
 {
-    "name": "paginator",
+    "name": "paginator-ftsa",
     "description": "Simple pagination for Meteor data",
     "homepage": "https://github.com/TimHeckel/meteor-paginator",
     "author": "Tim Heckel  (http://timheckel.com)",
-    "version": "0.1.1",
-    "git": "https://github.com/TimHeckel/meteor-paginator.git"
+    "version": "0.1.2",
+    "git": "https://github.com/laintin/meteor-paginator.git"
 }
